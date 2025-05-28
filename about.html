@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Mushroom Packaging</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2e7d32;
+            --secondary: #81c784;
+            --light: #f1f8e9;
+            --dark: #1b5e20;
+            --text: #333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .hero-section {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        .hero-section h1 {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .hero-section h1::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 4px;
+            background: var(--secondary);
+            bottom: -10px;
+            left: 25%;
+            border-radius: 2px;
+        }
+        
+        .hero-section p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .intro-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 60px;
+            align-items: center;
+        }
+        
+        .intro-text {
+            flex: 1;
+            min-width: 300px;
+            animation: slideInLeft 1s ease-in-out;
+        }
+        
+        .intro-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: slideInRight 1s ease-in-out;
+        }
+        
+        .intro-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .intro-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .features-section {
+            margin-bottom: 60px;
+        }
+        
+        .features-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 40px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            animation: fadeInUp 0.5s ease-in-out;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .feature-card .number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .feature-card h3 {
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .compost-section {
+            background: var(--light);
+            padding: 60px;
+            border-radius: 10px;
+            margin-bottom: 60px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        .compost-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 40px;
+        }
+        
+        .compost-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .compost-step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .compost-step:hover {
+            transform: scale(1.05);
+        }
+        
+        .compost-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .certifications-section {
+            margin-bottom: 60px;
+        }
+        
+        .certifications-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 40px;
+        }
+        
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .certification {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .certification:hover {
+            transform: translateY(-5px);
+        }
+        
+        .certification h3 {
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        
+        .ghg-section {
+            background: linear-gradient(rgba(46, 125, 50, 0.9), rgba(46, 125, 50, 0.8)), url('https://images.unsplash.com/photo-1615845781676-765d6f10c2f3?ixlib=rb-4.0.3');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 40px;
+            border-radius: 10px;
+            margin-bottom: 60px;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        .ghg-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+        
+        .ghg-section p {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+        
+        .stats-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .stat-item {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            min-width: 200px;
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .feedstock-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+        
+        .feedstock-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .feedstock-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .feedstock-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .feedstock-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .feedstock-text h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .fun-fact {
+            background: var(--light);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            border-left: 5px solid var(--primary);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideInLeft {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideInRight {
+            from { transform: translateX(50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.2rem;
+            }
+            
+            .intro-section, .feedstock-section {
+                flex-direction: column;
+            }
+            
+            .compost-section {
+                padding: 40px 20px;
+            }
+            
+            .ghg-section {
+                padding: 60px 20px;
+            }
+        }
+
+         header {
+            background-color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .navbar {
+            display: flex;
+            /* justify-content: space-between; */
+            align-items: center;
+            padding: 1.5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .mylogo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-right: 90px;
+        }
+        
+        .logo img {
+            height: 60px;
+            
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 1.05rem;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-actions {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .nav-button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-button:hover {
+            background-color: #1B5E20;
+        }
+    </style>
+</head>
+<body>
+
+   <header>
+        <div class="navbar">
+             <a href="./index.html" class="logo">
+                <img src="./public/b7f14c183593717.Y3JvcCwxNDAwLDEwOTUsMCw1MQ.jpg" alt="EcoPack Logo">
+                
+            </a>
+            
+            <div class="mylogo">
+                <span class="logo-text" >GoNatural</span>
+           
+            
+            <div class="nav-links">
+                <a href="./products.html">Products</a>
+                <a href="./technology.html">Technology</a>
+                <a href="./Sustainability.html">Sustainability</a>
+                <a href="./about.html">About</a>
+                <a href="./Resources.html">Resources</a>
+                <a href="./Contact.html">Contact</a>
+            </div>
+            <div class="nav-actions">
+                
+                <button class="nav-button">Get Started</button>
+            </div>
+        </div>
+    </header>
+
+
+
+    <div class="about-container">
+        <section class="hero-section">
+            <h1>About Mushroom® Packaging</h1>
+            <p>To combat styrofoam and plastic waste, Ecovative Design LLC created a new compostable packaging material by growing mycelium together with agricultural matter, what we've named MycoComposite™ technology.</p>
+            <p>Our Mushroom® Packaging is 100% home and marine compostable at the end of use.</p>
+        </section>
+        
+        <section class="intro-section">
+            <div class="intro-text">
+                <h2>What is Mushroom® Packaging?</h2>
+                <p>Mushroom® Packaging produces high-performing, sustainable packaging solutions grown from mycelium, the "roots" of mushrooms. Called MycoComposite™, this material is made with two simple ingredients — mycelium and hemp hurd — offering a regenerative alternative for the plastic foams used in protective packaging.</p>
+                <p>Unlike plastics, our packaging is home-compostable in 45 days, adding nutrients to the soil instead of pollution. Mushroom® Packaging is also a cost- and performance-competitive solution for custom-molded products.</p>
+            </div>
+            <div class="intro-image">
+                <img src="./public/photo-1580201092675-a0a6a6cafbb1.avif" alt="Mushroom Packaging">
+            </div>
+        </section>
+        
+        <section class="features-section">
+            <h2>Mushroom Packaging is</h2>
+            <div class="features-grid">
+                <div class="feature-card" style="animation-delay: 0.1s;">
+                    <div class="number">1</div>
+                    <h3>Grown to shape</h3>
+                    <p>Grown to shape in only 7 days, no post-processing required</p>
+                </div>
+                <div class="feature-card" style="animation-delay: 0.2s;">
+                    <div class="number">2</div>
+                    <h3>Cost effective</h3>
+                    <p>Custom molded at a fraction of the cost of foam packaging</p>
+                </div>
+                <div class="feature-card" style="animation-delay: 0.3s;">
+                    <div class="number">3</div>
+                    <h3>Flame resistant</h3>
+                    <p>Flame resistant, due to inherent properties of mycelium</p>
+                </div>
+                <div class="feature-card" style="animation-delay: 0.4s;">
+                    <div class="number">4</div>
+                    <h3>Biodegradable</h3>
+                    <p>Biodegradable and fully home-compostable, returning nutrients back to the earth</p>
+                </div>
+                <div class="feature-card" style="animation-delay: 0.5s;">
+                    <div class="number">5</div>
+                    <h3>Water resistant</h3>
+                    <p>Naturally water resistant (hydrophobic), making it suitable for thermal applications and shipping with ice packs</p>
+                </div>
+                <div class="feature-card" style="animation-delay: 0.6s;">
+                    <div class="number">6</div>
+                    <h3>Soil amendment</h3>
+                    <p>An active soil amendment, strengthens the growth of plants</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="compost-section">
+            <h2>Compostability</h2>
+            <p>Mushroom® Packaging is fully home-compostable and Cradle to Cradle Gold Certified. Whereas many products that claim to be compostable require energy-intensive processing, Mushroom® Packaging naturally reverts to soil nutrients after just 45 days.</p>
+            
+            <div class="compost-steps">
+                <div class="compost-step">
+                    <div class="compost-icon"><i class="fas fa-hand-break"></i></div>
+                    <h3>Break up Packaging</h3>
+                    <p>Simply break up the packaging into small pieces</p>
+                </div>
+                <div class="compost-step">
+                    <div class="compost-icon"><i class="fas fa-trash-alt"></i></div>
+                    <h3>Store in Compost Bin</h3>
+                    <p>Toss them into your compost bin</p>
+                </div>
+                <div class="compost-step">
+                    <div class="compost-icon"><i class="fas fa-seedling"></i></div>
+                    <h3>Spread in Garden</h3>
+                    <p>Or spread them throughout your garden</p>
+                </div>
+            </div>
+            
+            <p style="text-align: center; margin-top: 40px;">While it is possible to dispose of Mushroom® Packaging in the garbage or industrial compost bin, we recommend home composting. Mushroom® Packaging is a natural fit for the circular economy, creating self assembling, high value products from agricultural waste, reducing pollution and nourishing the planet at the same time.</p>
+            
+            <div style="text-align: center; margin-top: 30px; font-weight: bold;">
+                Shelf Life: 30 years, if kept in standard dry storage conditions
+            </div>
+        </section>
+        
+        <section class="certifications-section">
+            <h2>Industry Recognized Certifications</h2>
+            <div class="certifications-grid">
+                <div class="certification">
+                    <h3>Biodegradable Product Institute</h3>
+                    <p>(ASTM D6400, soil toxicology)</p>
+                </div>
+                <div class="certification">
+                    <h3>USDA Biobased Preferred</h3>
+                    <p>(ASTM D6866)</p>
+                </div>
+                <div class="certification">
+                    <h3>Declare Red-List Free</h3>
+                    <p>International Living Future Institute</p>
+                </div>
+                <div class="certification">
+                    <h3>VOC and Aldehyde Free</h3>
+                    <p>(ASTM D1333 & D6007)</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="ghg-section">
+            <h2>GHG Reduction</h2>
+            <p>Every year, Americans alone use an incredible 900,000 metric tons of plastic foam protective packaging. When you account for the embodied energy and fossil fuels involved, that's around 1.5 million metric tons of petroleum.</p>
+            <p>A comprehensive Life Cycle Assessment found that Mushroom® Packaging consumes only a tenth of the energy for an equivalent volume of foam, with only an eight of the greenhouse gasses.</p>
+            
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">900K</div>
+                    <p>metric tons of plastic foam used annually in US</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1.5M</div>
+                    <p>metric tons of petroleum equivalent</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1/10</div>
+                    <p>energy consumption vs foam</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1/8</div>
+                    <p>greenhouse gasses vs foam</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="feedstock-section">
+            <div class="feedstock-image">
+                <img src="./public/photo-1605000797499-95a51c5269ae.avif" alt="Hemp hurd">
+            </div>
+            <div class="feedstock-text">
+                <h2>Feedstock/Raw Materials</h2>
+                <p>Mushroom® Packaging is made from hemp hurd, which we upcycle from the waste streams of the fiber hemp industry. This is done through a process called decortication, where the fiber is stripped from the hemp plants and separated for use in various industries, like textiles and ropes.</p>
+                <p>We use the spongy hurd (or pith), which our mycelium loves to eat, binding together into a lightweight, solid material.</p>
+                
+                <div class="fun-fact">
+                    <p><i class="fas fa-lightbulb"></i> Fun fact: hemp sequesters more carbon per acre than any other commercial crop.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

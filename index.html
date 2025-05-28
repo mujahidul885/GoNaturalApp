@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoNatural</title>
+    <style>
+        :root {
+            --primary: #2E7D32; /* Eco green */
+            --secondary: #FF8F00; /* Accent orange */
+            --dark: #263238; /* Dark gray */
+            --light: #F5F5F6; /* Light background */
+            --text: #455A64; /* Text gray */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+        
+        body {
+            background-color: white;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .navbar {
+            display: flex;
+            /* justify-content: space-between; */
+            align-items: center;
+            padding: 1.5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .mylogo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-right: 90px;
+        }
+        
+        .logo img {
+            height: 60px;
+            
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 1.05rem;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-actions {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .nav-button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-button:hover {
+            background-color: #1B5E20;
+        }
+        
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 4rem;
+        }
+        
+        .hero-content {
+            flex: 1;
+        }
+        
+        .hero-tag {
+            display: inline-block;
+            background-color: #E8F5E9;
+            color: var(--primary);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .primary-button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.9rem 2rem;
+            font-size: 1.05rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .primary-button:hover {
+            background-color: #1B5E20;
+        }
+        
+        .secondary-button {
+            background-color: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 0.9rem 2rem;
+            font-size: 1.05rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .secondary-button:hover {
+            background-color: #E8F5E9;
+        }
+        
+        .hero-image {
+            flex: 1;
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        /* Stats Section */
+        .stats {
+            background-color: var(--light);
+            padding: 4rem 5%;
+        }
+        
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+        
+        .stat-item {
+            padding: 0 2rem;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-tag {
+            display: inline-block;
+            background-color: #E8F5E9;
+            color: var(--primary);
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .section-subtitle {
+            color: var(--text);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.15rem;
+        }
+        
+       .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.5rem;
+            margin-top: 4rem;
+        }
+        
+        .feature-tag {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .feature-tag:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .feature-tag i {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .feature-tag:hover i {
+            color: white;
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 6rem 5%;
+            background-color: var(--light);
+        }
+        
+        .products-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .products-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 3rem;
+        }
+        
+        .products-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+        
+        .view-all {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .product-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-category {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .product-desc {
+            color: var(--text);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .product-price {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .add-to-cart {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #1B5E20;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .testimonial-text::before {
+            content: '"';
+            font-size: 4rem;
+            color: #E8F5E9;
+            position: absolute;
+            top: -1.5rem;
+            left: -1rem;
+            z-index: -1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            font-weight: 600;
+        }
+        
+        .author-info p {
+            color: var(--text);
+            font-size: 0.9rem;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background-color: var(--primary);
+            color: white;
+            padding: 6rem 5%;
+            text-align: center;
+        }
+        
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+        
+        .cta-button-white {
+            background-color: white;
+            color: var(--primary);
+            border: none;
+            padding: 0.9rem 2rem;
+            font-size: 1.05rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .cta-button-white:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .cta-button-outline {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 0.9rem 2rem;
+            font-size: 1.05rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .cta-button-outline:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        /* Footer */
+        /* footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 5rem 5% 2rem;
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        
+        .footer-about p {
+            color: #B0BEC5;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .footer-social a {
+            color: white;
+            background-color: rgba(255,255,255,0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .footer-social a:hover {
+            background-color: var(--primary);
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #B0BEC5;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .footer-contact p {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+            color: #B0BEC5;
+        }
+        
+        .footer-contact i {
+            margin-top: 3px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #B0BEC5;
+            font-size: 0.9rem;
+        }
+         */
+
+         .footer {
+            background-color: rgb(9, 7, 7);
+            padding: 40px 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer-brand {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+             color: #ffffffa3;
+        }
+        
+        .footer-brand span {
+            display: block;
+            font-size: 14px;
+            font-weight: normal;
+            margin-top: 5px;
+             color: #ffffffa3;
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+              color: #ffffffa3;
+        }
+        
+        .footer-links h3 {
+            font-size: 16px;
+            margin-bottom: 15px;
+              color: #ffffffa3;
+        }
+        
+        .footer-links a {
+            color: #333;
+            text-decoration: none;
+            margin-bottom: 10px;
+            font-size: 14px;
+              color: #ffffffa3;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .footer-newsletter {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .footer-newsletter h3 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #ffffffa3;
+        }
+        
+        .email-input {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .email-input input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-right: none;
+            flex: 1;
+        }
+        
+        .email-input button {
+            padding: 10px 15px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .inquire-btn {
+            padding: 10px 15px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: fit-content;
+            margin-bottom: 20px;
+        }
+        
+        .footer-legal {
+            grid-column: 1 / -1;
+            font-size: 12px;
+            color: #666;
+            line-height: 1.5;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            color: #ffffffa3;
+        }
+        
+        .footer-locale {
+            font-size: 12px;
+            color: #666;
+            margin-top: 10px;
+           color: #ffffffa3;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header/Navigation -->
+   <header>
+        <div class="navbar">
+             <a href="./index.html" class="logo">
+                <img src="./public/b7f14c183593717.Y3JvcCwxNDAwLDEwOTUsMCw1MQ.jpg" alt="EcoPack Logo">
+                
+            </a>
+            
+            <div class="mylogo">
+                <span class="logo-text" >GoNatural</span>
+           
+            
+            <div class="nav-links">
+                <a href="./products.html">Products</a>
+                <a href="./technology.html">Technology</a>
+                <a href="./Sustainability.html">Sustainability</a>
+                <a href="./about.html">About</a>
+                <a href="./Resources.html">Resources</a>
+                <a href="./Contact.html">Contact</a>
+            </div>
+            <div class="nav-actions">
+                
+                <button class="nav-button">Get Started</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-tag">Sustainable Packaging</span>
+            <h1>Nature-Inspired Packaging Solutions for a Greener Future</h1>
+            <p>Our innovative mushroom-based materials provide eco-friendly alternatives to traditional packaging, reducing waste and carbon footprint without compromising quality.</p>
+            <div class="hero-buttons">
+                <button class="primary-button">Explore Products</button>
+                <button class="secondary-button">Learn More</button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="./public/photo-1605000797499-95a51c5269ae.avif" alt="Eco-friendly packaging">
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Biodegradable</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">60+</div>
+                <div class="stat-label">Happy Clients</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">500T</div>
+                <div class="stat-label">Waste Reduced</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">24H</div>
+                <div class="stat-label">Decomposes</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+   <section class="features">
+        <div class="section-header">
+            <span class="section-tag">Product Features</span>
+            <h2 class="section-title">Superior Eco-Friendly Properties</h2>
+            <p class="section-subtitle">Our mushroom packaging delivers exceptional performance while meeting the highest sustainability standards</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-tag">
+                <i class="fas fa-water"></i>
+                <h3>Ocean Safe</h3>
+            </div>
+            <div class="feature-tag">
+                <i class="fas fa-ban"></i>
+                <h3>Plastic Free</h3>
+            </div>
+            <div class="feature-tag">
+                <i class="fas fa-flask"></i>
+                <h3>Chemical Free</h3>
+            </div>
+            <div class="feature-tag">
+                <i class="fas fa-leaf"></i>
+                <h3>100% Natural</h3>
+            </div>
+            <div class="feature-tag">
+                <i class="fas fa-fire"></i>
+                <h3>Flame Resistant</h3>
+            </div>
+            <div class="feature-tag">
+                <i class="fas fa-seedling"></i>
+                <h3>Grown</h3>
+            </div>
+            <div class="feature-tag">
+                <i class="fas fa-recycle"></i>
+                <h3>Home Compostable</h3>
+            </div>
+            <div class="feature-tag">
+                <i class="fas fa-expand"></i>
+                <h3>Scalable</h3>
+            </div>
+            <div class="feature-tag">
+                <i class="fas fa-umbrella"></i>
+                <h3>Water Resistant</h3>
+            </div>
+            <div class="feature-tag">
+                <i class="fas fa-palette"></i>
+                <h3>Custom Design</h3>
+            </div>
+        </div>
+    </section>
+    <!-- //footer section -->
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                Mushroom Packaging
+                <span>By Ecovative</span>
+            </div>
+            
+            <div class="footer-links">
+                <h3>1 2 3 in</h3>
+                <a href="#">Custom Packaging</a>
+                <a href="#">Ready Made</a>
+                <a href="#">Our Process</a>
+                <a href="#">Licensing</a>
+                <a href="#">Technical Data</a>
+                <a href="#">Information Deck</a>
+            </div>
+            
+            <div class="footer-links">
+                <h3>&nbsp;</h3>
+                <a href="#">Our Customers</a>
+                <a href="#">FAQ</a>
+                <a href="#">About</a>
+                <a href="#">Contact:</a>
+                <a href="#">News</a>
+                <a href="#">Media Kit</a>
+            </div>
+            
+            <div class="footer-newsletter">
+                <h3>Stay in the know.</h3>
+                <div class="email-input">
+                    <input type="email" placeholder="Enter your email">
+                    <button>→</button>
+                </div>
+                <button class="inquire-btn">INQUIRE NOW</button>
+            </div>
+            
+            <div class="footer-legal">
+                We present these images to illustrate the flexibility and wide application of our Mushroom® Packaging technology; display of the images here is not to be construed as permission to copy, to make derivative works thereof, or otherwise use such images, packaging designs, or product designs, many of which are subject to intellectual property protections held by Ecovative, our customers, and/or third parties.
+            </div>
+            
+            <div class="footer-locale">
+                United States (USD $) ~
+            </div>
+        </div>
+    </footer>
