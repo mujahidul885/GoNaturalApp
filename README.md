@@ -53,7 +53,7 @@ GoNatural/
 ## 📸 Preview
 
 You can preview the site here (if deployed):  
-🔗 [Live Demo](https://mujahidul885.github.io/new-GoNatural/index.html)
+🔗 [Live Demo](https://mujahidul885.github.io/GoNaturalApp/)
 
 ## 📬 Contact
 
